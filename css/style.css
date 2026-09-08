@@ -400,6 +400,7 @@ section p {
   padding: 140px 8vw;
   display: flex;
   align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
 }
 
 .contact-content {
