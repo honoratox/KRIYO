@@ -1,0 +1,712 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: black;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #e5e5e5;
+  cursor: none;
+}
+
+/* CURSOR PERSONALIZADO */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(169, 169, 169, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.15s ease,
+    height 0.15s ease,
+    border 0.15s ease;
+}
+
+/* HEADER CENTRALIZADO */
+#main-header {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-center {
+  display: flex;
+  gap: 2.5rem;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+}
+
+.nav-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* TEXTO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(4rem, 10vw, 8rem);
+  letter-spacing: 0.1em;
+}
+
+.slogan {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  opacity: 0.7;
+}
+
+/* HINT SEMPRE VISÍVEL */
+.hint {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.486);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* CANVAS */
+#mask {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* SEÇÕES */
+section {
+  min-height: 100vh;
+  padding: 120px 8vw;
+  background: black;
+  position: relative;
+  z-index: 1;
+}
+
+section h2 {
+  font-size: 2rem;
+  letter-spacing: 0.4em;
+  margin-bottom: 2rem;
+}
+
+section p {
+  max-width: 520px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* =========================
+   ESSENCE SECTION
+========================= */
+
+.essence-section {
+  background: #e4e4e4;
+  color: #111;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Container principal */
+.essence-content {
+  width: 100%;
+  max-width: 1400px;
+  /* mais respiro lateral */
+  margin: 0 auto;
+  padding: 140px 6vw;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  /* texto levemente dominante */
+  gap: 6rem;
+}
+
+/* Texto */
+.essence-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.essence-text h2 {
+  font-size: 2.2rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 3rem;
+}
+
+/* Parágrafos mais largos */
+.essence-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 680px;
+  /* AQUI está a chave */
+  opacity: 0.95;
+}
+
+
+/* Área da imagem */
+.essence-image {
+  width: 100%;
+  height: 420px;
+
+  background: #eaeaea;
+  border-radius: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   PROJECTS SECTION (REFINADA)
+========================= */
+.projects-section {
+  background: #000;
+  padding: 120px 8vw;
+  /* Padding igual ao da Essência */
+  color: #e5e5e5;
+}
+
+.projects-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Título igual à seção Essência */
+.projects-section h2 {
+  font-size: 2.2rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.5rem;
+  /* Menor para o subtítulo vir logo abaixo */
+  color: #fff;
+}
+
+.projects-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 4rem;
+}
+
+/* Lista Projetos */
+.project-main-list {
+  margin-bottom: 6rem;
+}
+
+.project-item.main-featured {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 0;
+  /* Padding reduzido para elegância */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.196);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-item.main-featured:hover {
+  padding-left: 1.5rem;
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Nome do Projeto: Reduzido e Refinado */
+.project-item h3 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  /* Menos peso = mais sofisticação */
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+  transition: letter-spacing 0.5s ease;
+}
+
+.project-item:hover h3 {
+  letter-spacing: 0.08em;
+  /* Leve expansão no hover */
+}
+
+/* 1. Estado inicial (mais apagado/elegante) */
+.project-item .category {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  /* Reduzi para 0.2 para ficar bem sutil, como você pediu */
+  transition: opacity 0.4s ease;
+  /* Essencial para o efeito de "acender" suave */
+}
+
+/* 2. Efeito de acender (Gatilho no PAI afeta o FILHO) */
+.project-item:hover .category {
+  opacity: 0.6;
+  /* Sobe para 0.7 quando o mouse entra no item */
+}
+
+.view-project {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: all 0.4s ease;
+}
+
+.project-item:hover .view-project {
+  opacity: 0.6;
+  transform: translateX(0);
+}
+
+/* Grid de Projetos Menores */
+.other-projects-header {
+  margin-bottom: 2.5rem;
+  border-top: 1px solid rgba(172, 27, 27, 0.05);
+  padding-top: 4rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card-small {
+  background: rgba(255, 255, 255, 0.01);
+  /* Fundo quase invisível por padrão */
+  padding: 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.196);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+/* Efeito de Destaque no Hover */
+.project-card-small:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.381);
+  /* Borda muito mais visível */
+  transform: translateY(-8px);
+  /* Sobe um pouco mais para dar profundidade */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  /* Sombra para destacar do fundo */
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+  background: #0d0d0d;
+  /* Um pouco mais claro que o fundo puro */
+  margin-bottom: 1.5rem;
+  border-radius: 1px;
+  opacity: 0.4;
+  /* Imagem começa "apagada" */
+  transition: all 0.5s ease;
+  filter: grayscale(100%);
+  /* Começa em P&B para elegância */
+}
+
+.project-card-small:hover .card-image {
+  opacity: 1;
+  /* Acende a imagem */
+  filter: grayscale(0%);
+  /* Ganha cor (se houver) no hover */
+}
+
+.project-card-small h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+  color: rgba(255, 255, 255, 0.663);
+  /* Título começa cinza */
+  transition: color 0.4s ease;
+}
+
+.project-card-small:hover h4 {
+  color: #fff;
+  /* Título brilha em branco puro */
+}
+
+.project-card-small p {
+  font-size: 0.65rem;
+  opacity: 0.4;
+  /* Subtítulo bem sutil */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: opacity 0.4s ease;
+}
+
+.project-card-small:hover p {
+  opacity: 0.6;
+  /* Subtítulo aparece mais */
+}
+
+/* =========================
+   CONTACT SECTION (DARK) - REFINADA
+========================= */
+.contact-section {
+  background: #000;
+  color: #e5e5e5;
+  padding: 140px 8vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: center;
+  /* Garante que a logo e o texto alinhem horizontalmente ao meio */
+}
+
+/* Ajuste da Logo Assinada */
+.contact-image {
+  width: 100%;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  /* Removemos o fundo cinza */
+  border: none;
+  /* Removemos a borda */
+}
+
+.contact-image img {
+  max-width: 320px;
+  /* Tamanho ideal para uma logo assinada */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.6;
+  /* Começa sutil */
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-section:hover .contact-image img {
+  opacity: 1;
+  transform: scale(1.05);
+  /* Leve aproximação ao interagir */
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Título e Subtítulo */
+.contact-section h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 0.3em;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.contact-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 4rem;
+}
+
+/* Lista de Contatos */
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.contact-item {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item .label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+  /* Bem discreto para dar peso ao valor */
+  margin-bottom: 0.4rem;
+  transition: opacity 0.4s ease;
+}
+
+.contact-item .value {
+  font-size: 1.1rem;
+  /* Tamanho refinado */
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+
+.contact-item:hover .value {
+  opacity: 1;
+  color: #fff;
+  transform: translateX(-5px);
+  /* Desliza levemente para a esquerda */
+}
+
+.contact-item:hover .label {
+  opacity: 0.5;
+}
+
+/* Ajuste da Logo Assinada - Fixa e Constante */
+.contact-image img {
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  /* Mantém 100% de visibilidade sempre */
+  filter: none;
+  transform: none !important;
+  transition: none !important;
+  filter: none !important;
+}
+
+/* Ícones */
+.contact-icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2.5rem;
+}
+
+.contact-icons a {
+  color: #fff;
+  opacity: 0.3;
+  transition: all 0.4s ease;
+}
+
+.contact-icons a:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.main-footer {
+  background: #000;
+  padding: 50px 8vw;
+  /* Aumentei um pouco o respiro vertical */
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.copyright {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.375);
+}
+
+/* =================================================
+   RESPONSIVIDADE (MOBILE & TABLET)
+================================================= */
+
+@media (max-width: 1024px) {
+
+  /* Desativa cursor personalizado em touch devices */
+  .custom-cursor {
+    display: none;
+  }
+
+  body {
+    cursor: auto;
+  }
+
+  /* Ajuste de seções */
+  section {
+    padding: 80px 6vw;
+  }
+
+  .essence-content,
+  .contact-content {
+    grid-template-columns: 1fr;
+    /* Transforma grid em coluna única */
+    gap: 4rem;
+    text-align: center;
+  }
+
+  /* Ajustes na Seção Essência */
+  .essence-text {
+    align-items: center;
+  }
+
+  .essence-text p {
+    max-width: 100%;
+  }
+
+  .essence-image {
+    height: 350px;
+    order: 2;
+    /* Move a imagem para baixo do texto no mobile */
+  }
+
+  /* Ajustes na Seção de Contato */
+  .contact-text {
+    align-items: center;
+    text-align: center;
+    order: 1;
+  }
+
+  .contact-image {
+    order: 2;
+    height: auto;
+    min-height: 250px;
+  }
+
+  .contact-image img {
+    max-width: 280px;
+  }
+
+  .contact-info-list,
+  .contact-icons {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-item:hover {
+    transform: translateY(-3px);
+    /* Ajuste do hover para não deslizar pro lado */
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Header: Ajuste para não ocupar a tela toda */
+  .nav-center {
+    gap: 1.2rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* Hero: Títulos menores */
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .slogan {
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
+  }
+
+  /* Projetos Principais */
+  .project-item.main-featured {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .view-project {
+    display: none;
+    /* Esconde o "view project" no mobile para limpar o visual */
+  }
+
+  /* Projetos Menores (Grid) */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    /* Coluna única para os cards menores */
+  }
+
+  .other-projects-header {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .essence-text h2,
+  .projects-section h2,
+  .contact-section h2 {
+    font-size: 1.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  .contact-item .value {
+    font-size: 0.95rem;
+    /* Evita que o email quebre a tela */
+  }
+}
