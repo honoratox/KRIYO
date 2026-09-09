@@ -30,38 +30,35 @@ body {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition:
-    width 0.15s ease,
-    height 0.15s ease,
-    border 0.15s ease;
+  transition: width 0.15s ease, height 0.15s ease, border 0.15s ease;
 }
 
-/* HEADER CENTRALIZADO */
+/* HEADER CENTRALIZADO COM CTA */
 #main-header {
   position: fixed;
   top: 32px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-
-  opacity: 1;
-  pointer-events: auto;
+  width: max-content;
+  max-width: 95vw;
 }
 
 .nav-center {
   display: flex;
-  gap: 2.5rem;
-
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  padding: 0.8rem 2.2rem;
+  align-items: center;
+  gap: 1.8rem; /* Espaçamento levemente ajustado para comportar o item 'Início' */
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(16px);
+  padding: 0.7rem 1.8rem;
   border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-link {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.35em;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
@@ -74,7 +71,27 @@ body {
   transform: translateY(-1px);
 }
 
-/* TEXTO */
+.nav-cta-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-cta-btn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* HERO SECTION */
 .hero {
   position: relative;
   height: 100vh;
@@ -86,28 +103,33 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 9vw, 8rem);
   letter-spacing: 0.1em;
 }
 
 .slogan {
   margin-top: 16px;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
   letter-spacing: 0.4em;
   opacity: 0.7;
 }
 
-/* HINT SEMPRE VISÍVEL */
+/* HINTS VARIÁVEIS (DESKTOP E MOBILE) */
 .hint {
   position: absolute;
   bottom: 40px;
   width: 100%;
   text-align: center;
-  font-size: 0.9rem;
-  letter-spacing: 0.35em;
-  color: rgba(255, 255, 255, 0.486);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.5);
   z-index: 3;
   pointer-events: none;
+  padding: 0 1rem;
+}
+
+.hint-mobile {
+  display: none;
 }
 
 /* CANVAS */
@@ -118,25 +140,13 @@ body {
   pointer-events: none;
 }
 
-/* SEÇÕES */
+/* SEÇÕES GENÉRICAS */
 section {
   min-height: 100vh;
   padding: 120px 8vw;
   background: black;
   position: relative;
   z-index: 1;
-}
-
-section h2 {
-  font-size: 2rem;
-  letter-spacing: 0.4em;
-  margin-bottom: 2rem;
-}
-
-section p {
-  max-width: 520px;
-  line-height: 1.6;
-  opacity: 0.8;
 }
 
 /* =========================
@@ -151,19 +161,16 @@ section p {
   align-items: center;
 }
 
-/* Container principal ajustado */
 .essence-content {
   width: 100%;
-  max-width: 1100px; /* Reduzido de 1400px para fechar a largura da seção */
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 80px 4vw; /* Reduzido de 1400px/140px para deixar o topo e a base mais Enxutos */
-
+  padding: 80px 4vw;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Proporção 1:1 deixa o layout mais equilibrado */
-  gap: 4rem; /* Reduzido de 6rem para aproximar o texto da imagem */
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
 }
 
-/* Texto */
 .essence-text {
   display: flex;
   flex-direction: column;
@@ -173,22 +180,20 @@ section p {
 .essence-text h2 {
   font-size: 2rem;
   letter-spacing: 0.25em;
-  margin-bottom: 1.5rem; /* Reduzido de 3rem para tirar a folga do título */
+  margin-bottom: 1.5rem;
 }
 
-/* Parágrafos */
 .essence-text p {
   font-size: 1rem;
   line-height: 1.7;
-  margin-bottom: 1.5rem; /* Espaçamento menor entre parágrafos */
+  margin-bottom: 1.5rem;
   max-width: 500px;
   opacity: 0.95;
 }
 
-/* Área da imagem */
 .essence-image {
   width: 100%;
-  height: 380px; /* Ajuste a altura aqui se quiser a foto ainda mais baixa ou mais alta */
+  height: 380px;
   background: #eaeaea;
   border-radius: 2px;
   overflow: hidden;
@@ -202,12 +207,11 @@ section p {
 }
 
 /* =========================
-   PROJECTS SECTION (REFINADA)
+   PROJECTS SECTION
 ========================= */
 .projects-section {
   background: #000;
   padding: 120px 8vw;
-  /* Padding igual ao da Essência */
   color: #e5e5e5;
 }
 
@@ -216,12 +220,10 @@ section p {
   margin: 0 auto;
 }
 
-/* Título igual à seção Essência */
 .projects-section h2 {
   font-size: 2.2rem;
   letter-spacing: 0.3em;
   margin-bottom: 0.5rem;
-  /* Menor para o subtítulo vir logo abaixo */
   color: #fff;
 }
 
@@ -234,7 +236,6 @@ section p {
   margin-bottom: 4rem;
 }
 
-/* Lista Projetos */
 .project-main-list {
   margin-bottom: 6rem;
 }
@@ -244,8 +245,7 @@ section p {
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem 0;
-  /* Padding reduzido para elegância */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.196);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   text-decoration: none;
   color: inherit;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -257,11 +257,9 @@ section p {
   background: rgba(255, 255, 255, 0.02);
 }
 
-/* Nome do Projeto: Reduzido e Refinado */
 .project-item h3 {
   font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 400;
-  /* Menos peso = mais sofisticação */
   letter-spacing: 0.02em;
   margin-bottom: 4px;
   transition: letter-spacing 0.5s ease;
@@ -269,25 +267,19 @@ section p {
 
 .project-item:hover h3 {
   letter-spacing: 0.08em;
-  /* Leve expansão no hover */
 }
 
-/* 1. Estado inicial (mais apagado/elegante) */
 .project-item .category {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 0.4;
-  /* Reduzi para 0.2 para ficar bem sutil, como você pediu */
   transition: opacity 0.4s ease;
-  /* Essencial para o efeito de "acender" suave */
 }
 
-/* 2. Efeito de acender (Gatilho no PAI afeta o FILHO) */
 .project-item:hover .category {
-  opacity: 0.6;
-  /* Sobe para 0.7 quando o mouse entra no item */
+  opacity: 0.7;
 }
 
 .view-project {
@@ -306,59 +298,47 @@ section p {
   transform: translateX(0);
 }
 
-/* Grid de Projetos Menores */
 .other-projects-header {
   margin-bottom: 2.5rem;
-  border-top: 1px solid rgba(172, 27, 27, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 4rem;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
 .project-card-small {
   background: rgba(255, 255, 255, 0.01);
-  /* Fundo quase invisível por padrão */
   padding: 1.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.196);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  position: relative;
 }
 
-/* Efeito de Destaque no Hover */
 .project-card-small:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.381);
-  /* Borda muito mais visível */
-  transform: translateY(-8px);
-  /* Sobe um pouco mais para dar profundidade */
+  border-color: rgba(255, 255, 255, 0.38);
+  transform: translateY(-6px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-  /* Sombra para destacar do fundo */
 }
 
 .card-image {
   width: 100%;
   height: 160px;
   background: #0d0d0d;
-  /* Um pouco mais claro que o fundo puro */
   margin-bottom: 1.5rem;
   border-radius: 1px;
   opacity: 0.4;
-  /* Imagem começa "apagada" */
   transition: all 0.5s ease;
   filter: grayscale(100%);
-  /* Começa em P&B para elegância */
 }
 
 .project-card-small:hover .card-image {
   opacity: 1;
-  /* Acende a imagem */
   filter: grayscale(0%);
-  /* Ganha cor (se houver) no hover */
 }
 
 .project-card-small h4 {
@@ -366,32 +346,28 @@ section p {
   font-weight: 400;
   letter-spacing: 0.05em;
   margin-bottom: 0.4rem;
-  color: rgba(255, 255, 255, 0.663);
-  /* Título começa cinza */
+  color: rgba(255, 255, 255, 0.7);
   transition: color 0.4s ease;
 }
 
 .project-card-small:hover h4 {
   color: #fff;
-  /* Título brilha em branco puro */
 }
 
 .project-card-small p {
   font-size: 0.65rem;
   opacity: 0.4;
-  /* Subtítulo bem sutil */
   letter-spacing: 0.15em;
   text-transform: uppercase;
   transition: opacity 0.4s ease;
 }
 
 .project-card-small:hover p {
-  opacity: 0.6;
-  /* Subtítulo aparece mais */
+  opacity: 0.7;
 }
 
 /* =========================
-   CONTACT SECTION (DARK) - REFINADA
+   CONTACT SECTION (DARK)
 ========================= */
 .contact-section {
   background: #000;
@@ -410,37 +386,21 @@ section p {
   grid-template-columns: 1fr 1fr;
   gap: 8rem;
   align-items: center;
-  /* Garante que a logo e o texto alinhem horizontalmente ao meio */
 }
 
-/* Ajuste da Logo Assinada */
 .contact-image {
   width: 100%;
-  height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  /* Removemos o fundo cinza */
-  border: none;
-  /* Removemos a borda */
 }
 
 .contact-image img {
-  max-width: 320px;
-  /* Tamanho ideal para uma logo assinada */
+  max-width: 380px;
   width: 100%;
   height: auto;
   object-fit: contain;
-  opacity: 0.6;
-  /* Começa sutil */
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.contact-section:hover .contact-image img {
-  opacity: 1;
-  transform: scale(1.05);
-  /* Leve aproximação ao interagir */
+  opacity: 0.9;
 }
 
 .contact-text {
@@ -451,9 +411,7 @@ section p {
   align-items: flex-end;
 }
 
-/* Título e Subtítulo */
 .contact-section h2 {
-  font-family: 'Poppins', sans-serif;
   font-size: 2.2rem;
   letter-spacing: 0.3em;
   color: #fff;
@@ -469,12 +427,10 @@ section p {
   margin-bottom: 4rem;
 }
 
-/* Lista de Contatos */
 .contact-info-list {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  margin-bottom: 4rem;
 }
 
 .contact-item {
@@ -490,17 +446,14 @@ section p {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   opacity: 0.7;
-  /* Bem discreto para dar peso ao valor */
   margin-bottom: 0.4rem;
-  transition: opacity 0.4s ease;
 }
 
 .contact-item .value {
   font-size: 1.1rem;
-  /* Tamanho refinado */
   font-weight: 400;
   letter-spacing: 0.05em;
-  opacity: 0.5;
+  opacity: 0.6;
   transition: all 0.4s ease;
 }
 
@@ -508,43 +461,53 @@ section p {
   opacity: 1;
   color: #fff;
   transform: translateX(-5px);
-  /* Desliza levemente para a esquerda */
 }
 
-.contact-item:hover .label {
-  opacity: 0.5;
-}
-
-/* Ajuste da Logo Assinada - Fixa e Constante */
-.contact-image img {
-  max-width: 450px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  opacity: 1;
-  /* Mantém 100% de visibilidade sempre */
-  filter: none;
-  transform: none !important;
-  transition: none !important;
-  filter: none !important;
-}
-
-/* Ícones */
-.contact-icons {
+/* =========================
+   BOTÃO FLUTUANTE WHATSAPP (MINIMALISTA)
+========================= */
+.whatsapp-float-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
   display: flex;
-  justify-content: flex-end;
-  gap: 2.5rem;
-}
-
-.contact-icons a {
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
-  opacity: 0.3;
-  transition: all 0.4s ease;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-.contact-icons a:hover {
+.whatsapp-float-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.4s ease, opacity 0.3s ease;
+}
+
+.whatsapp-float-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  padding: 0.8rem 1.4rem;
+}
+
+.whatsapp-float-btn:hover .whatsapp-float-text {
+  max-width: 160px;
   opacity: 1;
-  transform: translateY(-5px);
 }
 
 /* =========================
@@ -552,16 +515,14 @@ section p {
 ========================= */
 .main-footer {
   background: #000;
-  padding: 50px 8vw;
-  /* Aumentei um pouco o respiro vertical */
-  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  padding: 40px 8vw;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .footer-container {
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -572,7 +533,7 @@ section p {
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.375);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* =================================================
@@ -580,17 +541,14 @@ section p {
 ================================================= */
 
 @media (max-width: 1024px) {
-
-  /* Desativa cursor personalizado em touch devices */
   .custom-cursor {
-    display: none;
+    display: none !important;
   }
 
   body {
-    cursor: auto;
+    cursor: auto !important;
   }
 
-  /* Ajuste de seções */
   section {
     padding: 80px 6vw;
   }
@@ -598,14 +556,12 @@ section p {
   .essence-content,
   .contact-content {
     grid-template-columns: 1fr;
-    /* Transforma grid em coluna única */
-    gap: 4rem;
-    text-align: center;
+    gap: 3.5rem;
   }
 
-  /* Ajustes na Seção Essência */
   .essence-text {
     align-items: center;
+    text-align: center;
   }
 
   .essence-text p {
@@ -613,12 +569,10 @@ section p {
   }
 
   .essence-image {
-    height: 350px;
+    height: 320px;
     order: 2;
-    /* Move a imagem para baixo do texto no mobile */
   }
 
-  /* Ajustes na Seção de Contato */
   .contact-text {
     align-items: center;
     text-align: center;
@@ -627,50 +581,45 @@ section p {
 
   .contact-image {
     order: 2;
-    height: auto;
-    min-height: 250px;
   }
 
   .contact-image img {
-    max-width: 280px;
+    max-width: 260px;
   }
 
-  .contact-info-list,
-  .contact-icons {
+  .contact-info-list {
     align-items: center;
-    justify-content: center;
   }
 
-  .contact-item:hover {
-    transform: translateY(-3px);
-    /* Ajuste do hover para não deslizar pro lado */
+  .hint-desktop {
+    display: none;
+  }
+
+  .hint-mobile {
+    display: block;
   }
 }
 
 @media (max-width: 768px) {
+  #main-header {
+    top: 16px;
+  }
 
-  /* Header: Ajuste para não ocupar a tela toda */
   .nav-center {
-    gap: 1.2rem;
-    padding: 0.6rem 1.5rem;
+    gap: 0.8rem;
+    padding: 0.5rem 1rem;
   }
 
   .nav-link {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
   }
 
-  /* Hero: Títulos menores */
-  .hero h1 {
-    font-size: 3.5rem;
+  .nav-cta-btn {
+    font-size: 0.52rem;
+    padding: 0.35rem 0.7rem;
   }
 
-  .slogan {
-    font-size: 0.9rem;
-    letter-spacing: 0.25em;
-  }
-
-  /* Projetos Principais */
   .project-item.main-featured {
     flex-direction: column;
     align-items: flex-start;
@@ -679,17 +628,17 @@ section p {
 
   .view-project {
     display: none;
-    /* Esconde o "view project" no mobile para limpar o visual */
   }
 
-  /* Projetos Menores (Grid) */
-  .projects-grid {
-    grid-template-columns: 1fr;
-    /* Coluna única para os cards menores */
+  .whatsapp-float-btn {
+    bottom: 20px;
+    right: 20px;
   }
 
-  .other-projects-header {
-    padding-top: 2rem;
+  /* No touch, mostra o texto expandido direto para facilitar clique */
+  .whatsapp-float-text {
+    max-width: 160px;
+    opacity: 1;
   }
 }
 
@@ -701,12 +650,11 @@ section p {
   .essence-text h2,
   .projects-section h2,
   .contact-section h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     letter-spacing: 0.2em;
   }
 
   .contact-item .value {
-    font-size: 0.95rem;
-    /* Evita que o email quebre a tela */
+    font-size: 0.9rem;
   }
 }
