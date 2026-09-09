@@ -19,6 +19,20 @@ const cursor = document.querySelector('.custom-cursor');
 let dpr = window.devicePixelRatio || 1;
 
 /* =========================
+   BARRA DE PROGRESSO NO SCROLL
+========================= */
+window.addEventListener('scroll', () => {
+  const progressBar = document.getElementById('progressBar');
+  if (!progressBar) return;
+
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+
+  progressBar.style.width = scrolled + '%';
+});
+
+/* =========================
    RESIZE (limitado à hero)
 ========================= */
 function resize() {
