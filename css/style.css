@@ -47,7 +47,7 @@ body {
 .nav-center {
   display: flex;
   align-items: center;
-  gap: 1.8rem; /* Espaçamento levemente ajustado para comportar o item 'Início' */
+  gap: 1.8rem;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(16px);
   padding: 0.7rem 1.8rem;
@@ -55,13 +55,14 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.nav-link {
+.nav-link, 
+.nav-link:visited {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #fff;
-  text-decoration: none;
+  color: #fff !important;
+  text-decoration: none !important;
   opacity: 0.7;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -71,24 +72,26 @@ body {
   transform: translateY(-1px);
 }
 
-.nav-cta-btn {
+.nav-cta-btn,
+.nav-cta-btn:visited {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fff;
-  text-decoration: none;
+  color: #ffffff !important;
+  text-decoration: none !important;
   padding: 0.5rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 999px;
   transition: all 0.3s ease;
   white-space: nowrap;
+  display: inline-block;
 }
 
 .nav-cta-btn:hover {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
+  background: #fff !important;
+  color: #000 !important;
+  border-color: #fff !important;
 }
 
 /* HERO SECTION */
@@ -114,7 +117,7 @@ body {
   opacity: 0.7;
 }
 
-/* HINTS VARIÁVEIS (DESKTOP E MOBILE) */
+/* HINTS VARIÁVEIS */
 .hint {
   position: absolute;
   bottom: 40px;
@@ -149,16 +152,13 @@ section {
   z-index: 1;
 }
 
-/* =========================
-   ESSENCE SECTION
-========================= */
-
+/* ESSENCE SECTION */
 .essence-section {
   background: #e4e4e4;
   color: #111;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: center; /* Centraliza o bloco na tela */
 }
 
 .essence-content {
@@ -169,6 +169,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
+  align-items: center; /* CENTRALIZA A IMAGEM VERTICALMENTE COM O TEXTO */
 }
 
 .essence-text {
@@ -191,12 +192,17 @@ section {
   opacity: 0.95;
 }
 
+/* Remove a altura fixa para que a imagem acompanhe a proporção do bloco sem achatar */
 .essence-image {
   width: 100%;
-  height: 380px;
+  max-height: 500px; /* Define um limite máximo de altura */
+  aspect-ratio: 4 / 5; /* Mantém uma proporção harmônica e elegante */
   background: #eaeaea;
   border-radius: 2px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .essence-image img {
@@ -206,9 +212,7 @@ section {
   display: block;
 }
 
-/* =========================
-   PROJECTS SECTION
-========================= */
+/* PROJECTS SECTION */
 .projects-section {
   background: #000;
   padding: 120px 8vw;
@@ -366,9 +370,7 @@ section {
   opacity: 0.7;
 }
 
-/* =========================
-   CONTACT SECTION (DARK)
-========================= */
+/* CONTACT SECTION */
 .contact-section {
   background: #000;
   color: #e5e5e5;
@@ -463,27 +465,26 @@ section {
   transform: translateX(-5px);
 }
 
-/* =========================
-   BOTÃO FLUTUANTE WHATSAPP (MINIMALISTA)
-========================= */
-.whatsapp-float-btn {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  padding: 0.8rem 1rem;
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+/* BOTÃO FLUTUANTE WHATSAPP */
+.whatsapp-float-btn,
+.whatsapp-float-btn:visited {
+  position: fixed !important;
+  bottom: 32px !important;
+  right: 32px !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+  background: rgba(10, 10, 10, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  padding: 0.8rem 1rem !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
 }
 
 .whatsapp-float-text {
@@ -499,10 +500,10 @@ section {
 }
 
 .whatsapp-float-btn:hover {
-  background: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
-  padding: 0.8rem 1.4rem;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+  padding: 0.8rem 1.4rem !important;
 }
 
 .whatsapp-float-btn:hover .whatsapp-float-text {
@@ -510,13 +511,15 @@ section {
   opacity: 1;
 }
 
-/* =========================
-   FOOTER
-========================= */
+.whatsapp-float-btn svg {
+  stroke: currentColor !important;
+}
+
+/* FOOTER */
 .main-footer {
   background: #000;
   padding: 40px 8vw;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer-container {
@@ -536,10 +539,7 @@ section {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* =================================================
-   RESPONSIVIDADE (MOBILE & TABLET)
-================================================= */
-
+/* RESPONSIVIDADE */
 @media (max-width: 1024px) {
   .custom-cursor {
     display: none !important;
@@ -630,12 +630,12 @@ section {
     display: none;
   }
 
-  .whatsapp-float-btn {
-    bottom: 20px;
-    right: 20px;
+  .whatsapp-float-btn,
+  .whatsapp-float-btn:visited {
+    bottom: 20px !important;
+    right: 20px !important;
   }
 
-  /* No touch, mostra o texto expandido direto para facilitar clique */
   .whatsapp-float-text {
     max-width: 160px;
     opacity: 1;
