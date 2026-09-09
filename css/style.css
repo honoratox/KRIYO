@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: black;
+  background: #000000;
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
   overflow-y: auto;
@@ -18,7 +18,9 @@ body {
   cursor: none;
 }
 
-/* CURSOR PERSONALIZADO */
+/* =========================
+   CURSOR PERSONALIZADO
+========================= */
 .custom-cursor {
   position: fixed;
   top: 0;
@@ -33,7 +35,9 @@ body {
   transition: width 0.15s ease, height 0.15s ease, border 0.15s ease;
 }
 
-/* HEADER CENTRALIZADO COM CTA */
+/* =========================
+   HEADER CENTRALIZADO COM BARRA
+========================= */
 #main-header {
   position: fixed;
   top: 32px;
@@ -61,7 +65,7 @@ body {
   font-size: 0.68rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #fff !important;
+  color: #ffffff !important;
   text-decoration: none !important;
   opacity: 0.7;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -89,12 +93,56 @@ body {
 }
 
 .nav-cta-btn:hover {
-  background: #fff !important;
-  color: #000 !important;
-  border-color: #fff !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
 }
 
-/* HERO SECTION */
+.progress-bar-container {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #ffffff;
+  transition: width 0.1s linear;
+}
+
+/* =========================
+   PADRONIZAÇÃO GLOBAL DE TÍTULOS (GRADIENTE DE ALTO LUXO)
+========================= */
+h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.projects-subtitle,
+.results-subtitle,
+.contact-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 4rem;
+}
+
+/* =========================
+   HERO SECTION & CANVAS
+========================= */
 .hero {
   position: relative;
   height: 100vh;
@@ -117,7 +165,6 @@ body {
   opacity: 0.7;
 }
 
-/* HINTS VARIÁVEIS */
 .hint {
   position: absolute;
   bottom: 40px;
@@ -135,7 +182,6 @@ body {
   display: none;
 }
 
-/* CANVAS */
 #mask {
   position: absolute;
   inset: 0;
@@ -143,22 +189,23 @@ body {
   pointer-events: none;
 }
 
-/* SEÇÕES GENÉRICAS */
 section {
   min-height: 100vh;
   padding: 120px 8vw;
-  background: black;
+  background: #000000;
   position: relative;
   z-index: 1;
 }
 
-/* ESSENCE SECTION */
+/* =========================
+   ESSENCE SECTION
+========================= */
 .essence-section {
   background: #e4e4e4;
-  color: #111;
+  color: #111111;
   min-height: 100vh;
   display: flex;
-  align-items: center; /* Centraliza o bloco na tela */
+  align-items: center;
 }
 
 .essence-content {
@@ -169,7 +216,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center; /* CENTRALIZA A IMAGEM VERTICALMENTE COM O TEXTO */
+  align-items: center;
 }
 
 .essence-text {
@@ -179,9 +226,10 @@ section {
 }
 
 .essence-text h2 {
-  font-size: 2rem;
-  letter-spacing: 0.25em;
-  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #111111 0%, #666666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .essence-text p {
@@ -192,11 +240,10 @@ section {
   opacity: 0.95;
 }
 
-/* Remove a altura fixa para que a imagem acompanhe a proporção do bloco sem achatar */
 .essence-image {
   width: 100%;
-  max-height: 500px; /* Define um limite máximo de altura */
-  aspect-ratio: 4 / 5; /* Mantém uma proporção harmônica e elegante */
+  max-height: 500px;
+  aspect-ratio: 4 / 5;
   background: #eaeaea;
   border-radius: 2px;
   overflow: hidden;
@@ -212,9 +259,11 @@ section {
   display: block;
 }
 
-/* PROJECTS SECTION */
+/* =========================
+   PROJECTS SECTION
+========================= */
 .projects-section {
-  background: #000;
+  background: #000000;
   padding: 120px 8vw;
   color: #e5e5e5;
 }
@@ -222,22 +271,6 @@ section {
 .projects-container {
   max-width: 1400px;
   margin: 0 auto;
-}
-
-.projects-section h2 {
-  font-size: 2.2rem;
-  letter-spacing: 0.3em;
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-
-.projects-subtitle {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  opacity: 0.6;
-  margin-bottom: 4rem;
 }
 
 .project-main-list {
@@ -291,7 +324,7 @@ section {
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fff;
+  color: #ffffff;
   opacity: 0;
   transform: translateX(-15px);
   transition: all 0.4s ease;
@@ -355,7 +388,7 @@ section {
 }
 
 .project-card-small:hover h4 {
-  color: #fff;
+  color: #ffffff;
 }
 
 .project-card-small p {
@@ -370,9 +403,154 @@ section {
   opacity: 0.7;
 }
 
-/* CONTACT SECTION */
+/* =========================
+   SEÇÃO RESULTADOS & PROVA SOCIAL
+========================= */
+.results-section {
+  background: #000000;
+  padding: 120px 8vw;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.results-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.results-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+/* CARDS BRANCOS DOS LOGOTIPOS */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+}
+
+.brand-card {
+  background: #ffffff;
+  border-radius: 20px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+.brand-card img {
+  max-width: 80%;
+  max-height: 60px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.brand-card:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* CARDS DE DEPOIMENTOS (HOVER INTENSO DE INVERSÃO) */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  background: #090a0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.testimonial-card:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+}
+
+.testimonial-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  font-weight: 300;
+  transition: color 0.4s ease;
+}
+
+.testimonial-card:hover .testimonial-text {
+  color: #111111;
+}
+
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #222222;
+  transition: transform 0.4s ease;
+}
+
+.testimonial-card:hover .user-avatar {
+  transform: scale(1.05);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.4s ease;
+}
+
+.testimonial-card:hover .user-name {
+  color: #000000;
+}
+
+.user-company {
+  font-size: 0.85rem;
+  color: #888888;
+  margin-top: 2px;
+  transition: color 0.4s ease;
+}
+
+.testimonial-card:hover .user-company {
+  color: #555555;
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
 .contact-section {
-  background: #000;
+  background: #000000;
   color: #e5e5e5;
   padding: 140px 8vw;
   display: flex;
@@ -413,22 +591,6 @@ section {
   align-items: flex-end;
 }
 
-.contact-section h2 {
-  font-size: 2.2rem;
-  letter-spacing: 0.3em;
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-
-.contact-subtitle {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 4rem;
-}
-
 .contact-info-list {
   display: flex;
   flex-direction: column;
@@ -461,11 +623,13 @@ section {
 
 .contact-item:hover .value {
   opacity: 1;
-  color: #fff;
+  color: #ffffff;
   transform: translateX(-5px);
 }
 
-/* BOTÃO FLUTUANTE WHATSAPP */
+/* =========================
+   BOTÃO FLUTUANTE WHATSAPP
+========================= */
 .whatsapp-float-btn,
 .whatsapp-float-btn:visited {
   position: fixed !important;
@@ -515,9 +679,11 @@ section {
   stroke: currentColor !important;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 .main-footer {
-  background: #000;
+  background: #000000;
   padding: 40px 8vw;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -539,7 +705,9 @@ section {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* RESPONSIVIDADE */
+/* =========================
+   RESPONSIVIDADE
+========================= */
 @media (max-width: 1024px) {
   .custom-cursor {
     display: none !important;
@@ -557,6 +725,14 @@ section {
   .contact-content {
     grid-template-columns: 1fr;
     gap: 3.5rem;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
   }
 
   .essence-text {
@@ -642,14 +818,26 @@ section {
   }
 }
 
+@media (max-width: 580px) {
+  .brands-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-card {
+    height: 100px;
+  }
+
+  .testimonial-card {
+    padding: 1.8rem;
+  }
+}
+
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2.8rem;
   }
 
-  .essence-text h2,
-  .projects-section h2,
-  .contact-section h2 {
+  h2 {
     font-size: 1.6rem;
     letter-spacing: 0.2em;
   }
