@@ -40,30 +40,32 @@ body {
 ========================= */
 #main-header {
   position: fixed;
-  top: 32px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
   width: max-content;
-  max-width: 95vw;
+  max-width: 92vw;
 }
 
 .nav-center {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
-  background: rgba(0, 0, 0, 0.55);
+  justify-content: center;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(16px);
-  padding: 0.7rem 1.8rem;
+  padding: 0.7rem 1.6rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  max-width: 100%;
 }
 
 .nav-link, 
 .nav-link:visited {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.68rem;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: #ffffff !important;
   text-decoration: none !important;
@@ -103,7 +105,7 @@ body {
   height: 2px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  margin-top: 8px;
+  margin-top: 6px;
   overflow: hidden;
 }
 
@@ -176,10 +178,6 @@ h2 {
   z-index: 3;
   pointer-events: none;
   padding: 0 1rem;
-}
-
-.hint-mobile {
-  display: none;
 }
 
 #mask {
@@ -423,7 +421,6 @@ section {
   margin-bottom: 2rem;
 }
 
-/* CARDS BRANCOS DOS LOGOTIPOS */
 .brands-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -461,7 +458,6 @@ section {
   opacity: 1;
 }
 
-/* CARDS DE DEPOIMENTOS (HOVER INTENSO DE INVERSÃO) */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -706,17 +702,25 @@ section {
 }
 
 /* =========================
-   RESPONSIVIDADE
+   REMOÇÃO DA REVEAL / MÁSCARA EM DISPOSITIVOS MÓVEIS (TOUCH)
 ========================= */
-@media (max-width: 1024px) {
-  .custom-cursor {
-    display: none !important;
-  }
-
+@media (hover: none) or (pointer: coarse) {
   body {
     cursor: auto !important;
   }
 
+  .custom-cursor,
+  #mask,
+  .hint {
+    display: none !important;
+    pointer-events: none !important;
+  }
+}
+
+/* =========================
+   RESPONSIVIDADE (MOBILE & TABLET)
+========================= */
+@media (max-width: 1024px) {
   section {
     padding: 80px 6vw;
   }
@@ -766,34 +770,37 @@ section {
   .contact-info-list {
     align-items: center;
   }
-
-  .hint-desktop {
-    display: none;
-  }
-
-  .hint-mobile {
-    display: block;
-  }
 }
 
 @media (max-width: 768px) {
+  /* HEADER ADAPTÁVEL PARA CELULAR (SEM QUEBRAR A LARGURA DA TELA) */
   #main-header {
-    top: 16px;
+    top: 12px;
+    width: 95vw;
   }
 
   .nav-center {
-    gap: 0.8rem;
-    padding: 0.5rem 1rem;
+    gap: 0.6rem;
+    padding: 0.5rem 0.8rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Esconde scrollbar Firefox */
+  }
+
+  .nav-center::-webkit-scrollbar {
+    display: none; /* Esconde scrollbar Chrome/Safari */
   }
 
   .nav-link {
     font-size: 0.55rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.3rem;
   }
 
   .nav-cta-btn {
     font-size: 0.52rem;
-    padding: 0.35rem 0.7rem;
+    padding: 0.35rem 0.6rem;
   }
 
   .project-item.main-featured {
