@@ -1,4 +1,34 @@
 /* =========================
+   FUNÇÃO DE INICIALIZAÇÃO DO MENU HAMBÚRGUER
+========================= */
+function initHamburgerMenu() {
+  const hamburgerBtn = document.getElementById('hamburger-toggle');
+  const navMenu = document.getElementById('nav-menu') || document.querySelector('.nav-center');
+  const navLinks = document.querySelectorAll('.nav-link, .nav-cta-btn');
+
+  if (hamburgerBtn && navMenu) {
+    // Evita múltiplos listeners caso a função seja chamada mais de uma vez
+    hamburgerBtn.onclick = null;
+    
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hamburgerBtn.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Fecha o menu ao clicar em qualquer link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  }
+}
+
+/* =========================
    IMPORTAR HEADER
 ========================= */
 const headerContainer = document.querySelector('[data-header]');
@@ -7,12 +37,17 @@ if (headerContainer) {
     .then(res => res.text())
     .then(html => {
       headerContainer.innerHTML = html;
+      // Inicializa os eventos do menu assim que o HTML for injetado
+      initHamburgerMenu();
     })
     .catch(err => console.error('Erro ao carregar header:', err));
+} else {
+  // Caso o header não seja dinâmico e já esteja presente no HTML
+  document.addEventListener('DOMContentLoaded', initHamburgerMenu);
 }
 
 const canvas = document.getElementById('mask');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 const hero = document.querySelector('.hero');
 const cursor = document.querySelector('.custom-cursor');
 
@@ -22,7 +57,7 @@ let dpr = window.devicePixelRatio || 1;
    BARRA DE PROGRESSO NO SCROLL
 ========================= */
 window.addEventListener('scroll', () => {
-  const progressBar = document.getElementById('progressBar');
+  const progressBar = document.getElementById('progressBar') || document.getElementById('progress-bar');
   if (!progressBar) return;
 
   const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -36,7 +71,7 @@ window.addEventListener('scroll', () => {
    RESIZE (limitado à hero)
 ========================= */
 function resize() {
-  if (!hero || !canvas) return;
+  if (!hero || !canvas || !ctx) return;
   const rect = hero.getBoundingClientRect();
 
   canvas.width = rect.width * dpr;
@@ -58,7 +93,7 @@ window.addEventListener('resize', resize);
 /* =========================
    REVEAL SOMENTE NA HERO
 ========================= */
-if (hero) {
+if (hero && canvas && ctx) {
   hero.addEventListener('mousemove', (e) => {
     const rect = hero.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -114,11 +149,11 @@ function fade() {
 fade();
 
 /* =========================
-   INTERAÇÃO DO CURSOR (clique)
+   INTERAÇÃO DO CURSOR (clique/hover)
 ========================= */
 function setupCursorInteractions() {
   if (!cursor) return;
-  const interactiveElements = document.querySelectorAll('.project-item, .project-card-small');
+  const interactiveElements = document.querySelectorAll('.project-item, .project-card-small, .brand-card, .testimonial-card');
 
   interactiveElements.forEach(item => {
     item.addEventListener('mouseenter', () => {
